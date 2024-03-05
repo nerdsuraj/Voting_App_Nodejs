@@ -71,7 +71,6 @@ userController.fecthUser = async (req, res) => {
         let reqBody = JSON.parse(JSON.stringify(req.body));
         console.log("🚀 ~ reqBody:", reqBody)
         let userData = await db.findByQuery(baseModel.userdb, {});
-        console.log("🚀 ~ userController.fecthUser= ~ userData:", userData)
         if (userData) {
             return res.status(200).json({ status: "success", data: userData });
         }
