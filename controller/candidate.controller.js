@@ -44,12 +44,10 @@ candidateController.updateCandidate = async (req, res) => {
     try {
         let id = req.params.id;
         let candidate = await dbquries.findOne(baseModel.Candidate, id);
-        console.log("🚀 ~ candidateController.updateCandidate= ~ candidate:", candidate)
         if (!candidate) {
             return res.status(400).json({ error: 'Candidate not found' });
         } else {
             let updateCandidate = await dbquries.findByIdAndUpdate(baseModel.Candidate, id, reqBody);
-            console.log("🚀 ~ candidateController.updateCandidate= ~ updateCandidate:", updateCandidate)
             if (updateCandidate) {
                 return res.status(200).json({ message: "Candidate Updated Successfully", data: updateCandidate });
             }
